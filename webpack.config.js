@@ -12,7 +12,13 @@ module.exports = {
             test: /\.(jpg?g|gif|png)$/i,
             use: [
                 {
-                    loader: 'file-loader'
+                    loader: 'url-loader',
+                    options: {
+                        // placeholder 占位符
+                        name: '[name]_[hash].[ext]',
+                        outputPath: 'images/',
+                        limit: 2048
+                    }
                 },
             ]
         }]
