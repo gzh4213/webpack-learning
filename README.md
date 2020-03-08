@@ -4,7 +4,10 @@
 
 ## npm info webpack 查看webpack的版本历史
 
-## webpack默认不支持打包png等格式，如果想支持，可以在配置文件中进行配置相应的loader，loader就是一个打包的方案，webpack本身不知道如何处理的文件，它知道如何把指定的文件进行怎样的打包
+
+## loader
+
+### webpack默认不支持打包png等格式，如果想支持，可以在配置文件中进行配置相应的loader，loader就是一个打包的方案，webpack本身不知道如何处理的文件，它知道如何把指定的文件进行怎样的打包
 
 ### url-loader 可以把图片直接已base64格式打包到js中, limit属性可以控制将小于此值的文件以base64的格式打包
 
@@ -42,3 +45,10 @@ last 2 versions
 iOS 7
 last 3 iOS versions
 ````
+
+## plugin： 可以在webpack运行到某个时刻（webpack的生命周期，类似vue的生命周期）的时候帮你做一些事情
+
+### htmlWebpackPlugin 会在打包结束后，自动生成一个html文件，并把打包生成的js自动引入到这个html中
+> template 属性：会以你引用的html模版为基础，生成html文件
+
+### clean-webpack-plugin  会在打包之前把output目录清空
