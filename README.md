@@ -13,3 +13,6 @@
 
 > url-loader 允许你有条件地将文件转换为内联的 base-64 URL (当文件小于给定的阈值)，这会减少小文件的 HTTP 请求数。如果文件大于该阈值，会自动的交给 file-loader 处理。
  
+> css-loader 会分析出css文件之间的关系，并合并成一段css
+
+> style-loader 在得到css-loader生成的一段css后，会把其挂在到页面的head部分
