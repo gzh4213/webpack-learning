@@ -1,7 +1,6 @@
-import component from "./createAvatar";
 import imgTest from './123.png'
 import style from './index.scss'
-function component1() {
+function component() {
     let element = document.createElement('div')
     let img = new Image();
     img.src = imgTest;
@@ -11,5 +10,6 @@ function component1() {
     element.appendChild(img)
     return element;
 }
-document.body.appendChild(component1())
-document.body.appendChild(component())
+
+
+export default component;

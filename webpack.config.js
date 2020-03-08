@@ -25,7 +25,18 @@ module.exports = {
             },
             {
                 test: /\.scss$/i,
-                use: ['style-loader','css-loader','sass-loader','postcss-loader']
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,   // 在执行css-loader前，先去执行sass-loader和postcss-loader
+                            modules: true,      // 模块化打包，样式不作用于全局
+                        }
+                    },
+                    'sass-loader',
+                    'postcss-loader'
+                ]
             }
         ]
     }
