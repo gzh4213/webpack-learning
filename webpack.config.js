@@ -3,10 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
     mode: 'production',
-    entry: './src/index.js',
+    entry: {
+        main: './src/index.js',
+        sub: './src/index.js'
+    },
     output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: 'http://cdn.ddd.com'
     },
     module: {
         rules: [
