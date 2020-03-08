@@ -15,7 +15,7 @@
  
 > css-loader 会分析出css文件之间的关系，并合并成一段css
 
-> style-loader 在得到css-loader生成的一段css后，会把其挂在到页面的head部分
+> style-loader 在得到css-loader生成的一段css后，会把其挂在到页面的head部分, 建议将style-loader和css-loader一起使用
 
 > sass-loader 使用时还需安装node-sass
 
@@ -36,4 +36,9 @@ package.json
 
 
 .browserslistrc
+not ie < 11
+last 2 versions
+> 1%
+iOS 7
+last 3 iOS versions
 ````
