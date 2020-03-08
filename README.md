@@ -20,3 +20,20 @@
 > sass-loader 使用时还需安装node-sass
 
 ### loader的执行是有顺序的，按着从下到上，从右到左的顺序执行
+
+> postcss-loader autoprefixer 为css3样式添加厂商前缀，在package.json中指定哪些浏览器添加前缀, 或者创建.browserslistrc配置文件
+````
+package.json
+
+"browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
+
+
+.browserslistrc
+````
