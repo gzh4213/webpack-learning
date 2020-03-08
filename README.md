@@ -16,3 +16,7 @@
 > css-loader 会分析出css文件之间的关系，并合并成一段css
 
 > style-loader 在得到css-loader生成的一段css后，会把其挂在到页面的head部分
+
+> sass-loader 使用时还需安装node-sass
+
+### loader的执行是有顺序的，按着从下到上，从右到左的顺序执行

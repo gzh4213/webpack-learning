@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import imgTest from './123.png'
-import './index.css'
+import './index.scss'
 
 function component() {
     let element = document.createElement('div')
