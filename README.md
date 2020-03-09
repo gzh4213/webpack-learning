@@ -52,3 +52,17 @@ last 3 iOS versions
 > template 属性：会以你引用的html模版为基础，生成html文件
 
 ### clean-webpack-plugin  会在打包之前把output目录清空
+
+
+## sourceMap 他是一个映射关系。当代码报错时，可以定位到源代码的位置 例如：现在知道dist目录下main.js文件96行出错，sourceMap就会知道其对应的是src目录下index.js文件中第一行出错了
+
+### cheap-module-eval-source-map 适用于开发环境
+
+### cheap-module-source-map 适用于线上环境
+
+> inline map文件不单独出现，会合并到打包文件中
+
+> cheap 错误定位到行，不精确到列，只负责业务代码，不关心第三方模块
+
+> module 映射第三方模块
+

@@ -2,15 +2,15 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
-    mode: 'production',
+    mode: 'development',
+    devtool: 'cheap-module-eval-source-map',   // 开发环境提示效果好
+    // devtool: 'cheap-module-source-map',   // 线上环境
     entry: {
         main: './src/index.js',
-        sub: './src/index.js'
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: 'http://cdn.ddd.com'
     },
     module: {
         rules: [
