@@ -66,3 +66,8 @@ last 3 iOS versions
 
 > module 映射第三方模块
 
+
+## webpack --watch 可以实时监听文件变化，自动重新打包
+## webpack-dev-server 不仅可以监听文件变化，自动重新打包，还可以自动刷新浏览器, 支持本地发起ajax请求，方便业务调试
+
+
