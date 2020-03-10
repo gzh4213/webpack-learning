@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
+
 module.exports = {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',   // 开发环境提示效果好
@@ -16,6 +18,8 @@ module.exports = {
         contentBase: './dist',
         open: true,
         port: 8080,
+        hot: true,
+        hotOnly: true,
     },
     module: {
         rules: [
@@ -48,6 +52,14 @@ module.exports = {
                 ]
             },
             {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
+            },
+            {
                 test: /\.(eot|ttf|svg|woff)$/i,
                 use: [
                     {
@@ -63,6 +75,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
