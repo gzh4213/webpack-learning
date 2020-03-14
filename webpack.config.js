@@ -26,28 +26,7 @@ module.exports = {
             { 
                 test: /\.js$/, 
                 exclude: /node_modules/, 
-                loader: 'babel-loader',
-                options: {
-                    // presets: [['@babel/preset-env',{
-                    //     'targets': {
-                    //         "chrome": "67"
-                    //     },
-                    //     useBuiltIns: 'usage'
-                    // }]]
-                    "plugins": [
-                        [
-                          "@babel/plugin-transform-runtime",
-                          {
-                            "absoluteRuntime": false,
-                            "corejs": 2,
-                            "helpers": true,
-                            "regenerator": true,
-                            "useESModules": false,
-                            "version": "7.0.0-beta.0"
-                          }
-                        ]
-                    ]
-                }
+                loader: 'babel-loader'
             },
             {
                 test: /\.(jpg?g|gif|png)$/i,
