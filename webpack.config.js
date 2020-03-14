@@ -16,13 +16,26 @@ module.exports = {
     },
     devServer: {
         contentBase: './dist',
-        open: true,
+        // open: true,
         port: 8080,
         hot: true,
         hotOnly: true,
     },
     module: {
         rules: [
+            { 
+                test: /\.js$/, 
+                exclude: /node_modules/, 
+                loader: 'babel-loader',
+                options: {
+                    presets: [['@babel/preset-env',{
+                        'targets': {
+                            "chrome": "67"
+                        },
+                        useBuiltIns: 'usage'
+                    }]]
+                }
+            },
             {
                 test: /\.(jpg?g|gif|png)$/i,
                 use: [

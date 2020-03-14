@@ -10,11 +10,15 @@
   "author": "guozhen",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "lodash": "^4.17.15",
     "webpack": "^4.41.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "autoprefixer": "^9.7.4",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "express": "^4.17.1",
