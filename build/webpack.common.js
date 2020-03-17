@@ -1,25 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const webpack = require('webpack')
 
 module.exports = {
-    mode: 'production',
-    devtool: 'cheap-module-source-map',   // 开发环境提示效果好
     entry: {
         main: './src/index.js',
-    },
-    output: {
-        // publicPath: '/',
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
-    },
-    devServer: {
-        contentBase: './dist',
-        // open: true,
-        port: 8080,
-        hot: true,
-        hotOnly: true,
     },
     module: {
         rules: [
@@ -75,15 +60,15 @@ module.exports = {
             
         ]
     },
-
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
         new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin()
     ],
-    // optimization: {
-    //     usedExports: true
-    // }
+    output: {
+        // publicPath: '/',
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+    },
 }

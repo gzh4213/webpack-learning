@@ -78,3 +78,6 @@ last 3 iOS versions
 
 > mode: 'development'下，使用tree shaking会把没被使用的exports照样打包，mode: 'production'下不需在webpack中增加配置
 > "sideEffects": false  --对所有模块使用tree shaking，"sideEffects": ["*.css"] -- css文件不使用tree Shaking
+
+
+## development 和 production模式的区分打包
