@@ -4,8 +4,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
-    mode: 'development',
-    devtool: 'cheap-module-eval-source-map',   // 开发环境提示效果好
+    mode: 'production',
+    devtool: 'cheap-module-source-map',   // 开发环境提示效果好
     entry: {
         main: './src/index.js',
     },
@@ -82,5 +82,8 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    // optimization: {
+    //     usedExports: true
+    // }
 }

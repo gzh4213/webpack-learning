@@ -71,3 +71,10 @@ last 3 iOS versions
 ## webpack-dev-server 不仅可以监听文件变化，自动重新打包，还可以自动刷新浏览器, 支持本地发起ajax请求，方便业务调试
 
 
+
+## 如果babel配置中使用了"useBuiltIns": "usage"，babel/polyfill 会被自动的引入打包文件中，则打包文件中不需要在引入 'import '@babel/polyfill'
+
+## Tree shaking： 只打包import倒入文件中被使用的模块， 只支持ES Module的引入方式，ES Module底层是静态引入， CommonJs底层是动态引入
+
+> mode: 'development'下，使用tree shaking会把没被使用的exports照样打包，mode: 'production'下不需在webpack中增加配置
+> "sideEffects": false  --对所有模块使用tree shaking，"sideEffects": ["*.css"] -- css文件不使用tree Shaking
