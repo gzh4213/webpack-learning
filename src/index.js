@@ -1,4 +1,2 @@
-// Tree shaking
-import { add } from './math'
-
-add(3,5)
+import _ from 'lodash'
+console.log(_.join(['a','b','c'],'***'))
