@@ -66,11 +66,11 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
     ],
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all'
+    //     }
+    // },
     output: {
         // publicPath: '/',
         filename: '[name].js',
