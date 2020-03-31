@@ -1,21 +1,19 @@
-// import test from "./test";
-// console.log(test.name)
+async function getComponent() {
+  const {default:_} = await import(/* webpackChunkName:"lodash"*/ 'lodash')
+  const element = document.createElement('div')
+  element.innerHTML = _.join(['Dell', 'Lee'], '-')
+  return element
 
-import _ from "lodash";
-var element = document.createElement('div')
-element.innerHTML = _.join(['Dell', 'Lee'], '-')
-document.body.appendChild(element)
+  // return import(/* webpackChunkName:"lodash"*/ 'lodash').then(({default:_}) => {
+  //   var element = document.createElement('div')
+  //   element.innerHTML = _.join(['Dell', 'Lee'], '-')
 
+  //   return element
+  // })
+}
 
-// function getComponent() {
-//   return import(/* webpackChunkName:"lodash"*/ 'lodash').then(({default:_}) => {
-//     var element = document.createElement('div')
-//     element.innerHTML = _.join(['Dell', 'Lee'], '-')
-
-//     return element
-//   })
-// }
-
-// getComponent().then(element => {
-//   document.body.appendChild(element)
-// })
+document.addEventListener('click',() => {
+  getComponent().then(element => {
+    document.body.appendChild(element)
+  })
+})

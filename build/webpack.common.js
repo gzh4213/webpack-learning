@@ -67,28 +67,8 @@ module.exports = {
         new CleanWebpackPlugin(),
     ],
     optimization: {
-        splitChunks: {
+        splitChunks: {  // 使用默认配置即可
             chunks: 'all',  // async: 只对异步代码生效; all: 同步异步都生效
-            minSize: 30000, // 引入的包大于此大小时，才做代码分割
-            maxSize: 0,  // 50KB, lodash 1mb
-            minChunks: 1, // 当模块被引用几次后进行代码分割
-            maxAsyncRequests: 5,  // 最多同时代码分割的数量，超过不再进行代码分割
-            maxInitialRequests: 3,  // 入口文件最多进行的代码分割
-            automaticNameDelimiter: '~',  // 文件连接符
-            name: true,
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,  // 配置后同步分割才生效
-                    priority: -10,    // 优先级
-                    // filename: 'vendors.js'
-                },
-                default: { 
-                    // minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true,
-                    // filename: 'common.js'
-                }
-            }
         }
     },
     output: {

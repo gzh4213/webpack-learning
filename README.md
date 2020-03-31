@@ -96,3 +96,7 @@ last 3 iOS versions
 
 plugins: ['plugin-syntax-dynamic-import]
 ````
+
+### chunk是什么
+
+> 打包生成的每一个js文件都可叫做chunk
