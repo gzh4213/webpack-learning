@@ -86,4 +86,13 @@ last 3 iOS versions
 ## 代码分割，和webpack无关
 ### webpack中实现代码分割，两种方式
 > 1.同步代码：只需要在webpack.common.js中做optimization的配置
+
 > 2.异步代码(import)：异步代码，无需做任何配置，会自动进行代码分割，分割代码会放置到新的文件中
+异步加载中有一种魔法注释的语法，在做代码分割的时候，可以给拆分的文件重命名；格式：/* webpackChunkName:"lodash"*/
+生成的文件名格式为： vendors~xxxx.js,
+
+````
+.babelrc
+
+plugins: ['plugin-syntax-dynamic-import]
+````
