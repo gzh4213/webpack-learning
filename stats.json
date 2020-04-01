@@ -2,14 +2,14 @@
   "errors": [],
   "warnings": [],
   "version": "4.41.6",
-  "hash": "e31363db73df39b3118d",
-  "time": 1383,
-  "builtAt": 1585668764651,
+  "hash": "c2cff0932e92b9448833",
+  "time": 1368,
+  "builtAt": 1585710872788,
   "publicPath": "",
   "outputPath": "/Users/guozhen/work/frontEnd/webpack/dist",
   "assetsByChunkName": {
     "main": "main.js",
-    "vendors~lodash": "vendors~lodash.js"
+    "vendors~lodash": "vendors~lodash.chunk.js"
   },
   "assets": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "name": "main.js",
-      "size": 36089,
+      "size": 35542,
       "chunks": [
         "main"
       ],
@@ -33,7 +33,7 @@
       "emitted": true
     },
     {
-      "name": "vendors~lodash.js",
+      "name": "vendors~lodash.chunk.js",
       "size": 1421883,
       "chunks": [
         "vendors~lodash"
@@ -74,7 +74,7 @@
         "vendors~lodash"
       ],
       "assets": [
-        "vendors~lodash.js"
+        "vendors~lodash.chunk.js"
       ],
       "children": {},
       "childAssets": {}
@@ -86,14 +86,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 591,
+      "size": 373,
       "names": [
         "main"
       ],
       "files": [
         "main.js"
       ],
-      "hash": "a3449fe8984c0038f6b0",
+      "hash": "69e16989d44849de2703",
       "siblings": [],
       "parents": [],
       "children": [
@@ -107,7 +107,7 @@
           "name": "./src/index.js",
           "index": 0,
           "index2": 0,
-          "size": 591,
+          "size": 373,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -120,8 +120,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 71,
-            "building": 785
+            "factory": 49,
+            "building": 801
           },
           "failed": false,
           "errors": 0,
@@ -142,7 +142,7 @@
           "providedExports": null,
           "optimizationBailout": [],
           "depth": 0,
-          "source": "async function getComponent() {\n  const {\n    default: _\n  } = await import(\n  /* webpackChunkName:\"lodash\"*/\n  'lodash');\n  const element = document.createElement('div');\n  element.innerHTML = _.join(['Dell', 'Lee'], '-');\n  return element; // return import(/* webpackChunkName:\"lodash\"*/ 'lodash').then(({default:_}) => {\n  //   var element = document.createElement('div')\n  //   element.innerHTML = _.join(['Dell', 'Lee'], '-')\n  //   return element\n  // })\n}\n\ndocument.addEventListener('click', () => {\n  getComponent().then(element => {\n    document.body.appendChild(element);\n  });\n});"
+          "source": "async function getComponent() {\n  const {\n    default: _\n  } = await import(\n  /* webpackChunkName:\"lodash\" */\n  'lodash');\n  const element = document.createElement('div');\n  element.innerHTML = _.join(['Dell', 'Lee'], '-');\n  return element;\n}\n\ndocument.addEventListener('click', () => {\n  getComponent().then(element => {\n    document.body.appendChild(element);\n  });\n});"
         }
       ],
       "filteredModules": 0,
@@ -168,7 +168,7 @@
         "vendors~lodash"
       ],
       "files": [
-        "vendors~lodash.js"
+        "vendors~lodash.chunk.js"
       ],
       "hash": "540f3085386b12ebf3d8",
       "siblings": [],
@@ -201,14 +201,14 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/babel-loader/lib/index.js!/Users/guozhen/work/frontEnd/webpack/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 71,
-                "building": 785
+                "factory": 49,
+                "building": 801
               }
             }
           ],
           "profile": {
-            "factory": 15,
-            "building": 284
+            "factory": 13,
+            "building": 282
           },
           "failed": false,
           "errors": 0,
@@ -254,8 +254,8 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/babel-loader/lib/index.js!/Users/guozhen/work/frontEnd/webpack/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 71,
-                "building": 785
+                "factory": 49,
+                "building": 801
               }
             },
             {
@@ -263,8 +263,8 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
               "name": "./node_modules/lodash/lodash.js",
               "profile": {
-                "factory": 15,
-                "building": 284
+                "factory": 13,
+                "building": 282
               }
             }
           ],
@@ -316,8 +316,8 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/babel-loader/lib/index.js!/Users/guozhen/work/frontEnd/webpack/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 71,
-                "building": 785
+                "factory": 49,
+                "building": 801
               }
             },
             {
@@ -325,8 +325,8 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
               "name": "./node_modules/lodash/lodash.js",
               "profile": {
-                "factory": 15,
-                "building": 284
+                "factory": 13,
+                "building": 282
               }
             }
           ],
@@ -394,14 +394,14 @@
           "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/babel-loader/lib/index.js!/Users/guozhen/work/frontEnd/webpack/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 71,
-            "building": 785
+            "factory": 49,
+            "building": 801
           }
         }
       ],
       "profile": {
-        "factory": 15,
-        "building": 284
+        "factory": 13,
+        "building": 282
       },
       "failed": false,
       "errors": 0,
@@ -447,8 +447,8 @@
           "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/babel-loader/lib/index.js!/Users/guozhen/work/frontEnd/webpack/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 71,
-            "building": 785
+            "factory": 49,
+            "building": 801
           }
         },
         {
@@ -456,8 +456,8 @@
           "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
           "name": "./node_modules/lodash/lodash.js",
           "profile": {
-            "factory": 15,
-            "building": 284
+            "factory": 13,
+            "building": 282
           }
         }
       ],
@@ -509,8 +509,8 @@
           "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/babel-loader/lib/index.js!/Users/guozhen/work/frontEnd/webpack/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 71,
-            "building": 785
+            "factory": 49,
+            "building": 801
           }
         },
         {
@@ -518,8 +518,8 @@
           "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
           "name": "./node_modules/lodash/lodash.js",
           "profile": {
-            "factory": 15,
-            "building": 284
+            "factory": 13,
+            "building": 282
           }
         }
       ],
@@ -554,7 +554,7 @@
       "name": "./src/index.js",
       "index": 0,
       "index2": 0,
-      "size": 591,
+      "size": 373,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -567,8 +567,8 @@
       "issuerName": null,
       "issuerPath": null,
       "profile": {
-        "factory": 71,
-        "building": 785
+        "factory": 49,
+        "building": 801
       },
       "failed": false,
       "errors": 0,
@@ -589,7 +589,7 @@
       "providedExports": null,
       "optimizationBailout": [],
       "depth": 0,
-      "source": "async function getComponent() {\n  const {\n    default: _\n  } = await import(\n  /* webpackChunkName:\"lodash\"*/\n  'lodash');\n  const element = document.createElement('div');\n  element.innerHTML = _.join(['Dell', 'Lee'], '-');\n  return element; // return import(/* webpackChunkName:\"lodash\"*/ 'lodash').then(({default:_}) => {\n  //   var element = document.createElement('div')\n  //   element.innerHTML = _.join(['Dell', 'Lee'], '-')\n  //   return element\n  // })\n}\n\ndocument.addEventListener('click', () => {\n  getComponent().then(element => {\n    document.body.appendChild(element);\n  });\n});"
+      "source": "async function getComponent() {\n  const {\n    default: _\n  } = await import(\n  /* webpackChunkName:\"lodash\" */\n  'lodash');\n  const element = document.createElement('div');\n  element.innerHTML = _.join(['Dell', 'Lee'], '-');\n  return element;\n}\n\ndocument.addEventListener('click', () => {\n  getComponent().then(element => {\n    document.body.appendChild(element);\n  });\n});"
     }
   ],
   "filteredModules": 0,
@@ -680,8 +680,8 @@
               "issuerName": null,
               "issuerPath": null,
               "profile": {
-                "factory": 40,
-                "building": 35
+                "factory": 26,
+                "building": 145
               },
               "failed": false,
               "errors": 0,
@@ -726,14 +726,14 @@
                   "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/html-webpack-plugin/lib/loader.js!/Users/guozhen/work/frontEnd/webpack/src/index.html",
                   "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
                   "profile": {
-                    "factory": 40,
-                    "building": 35
+                    "factory": 26,
+                    "building": 145
                   }
                 }
               ],
               "profile": {
-                "factory": 3,
-                "building": 988
+                "factory": 642,
+                "building": 236
               },
               "failed": false,
               "errors": 0,
@@ -779,8 +779,8 @@
                   "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/html-webpack-plugin/lib/loader.js!/Users/guozhen/work/frontEnd/webpack/src/index.html",
                   "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
                   "profile": {
-                    "factory": 40,
-                    "building": 35
+                    "factory": 26,
+                    "building": 145
                   }
                 },
                 {
@@ -788,13 +788,13 @@
                   "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
                   "name": "./node_modules/lodash/lodash.js",
                   "profile": {
-                    "factory": 3,
-                    "building": 988
+                    "factory": 642,
+                    "building": 236
                   }
                 }
               ],
               "profile": {
-                "factory": 100,
+                "factory": 105,
                 "building": 4
               },
               "failed": false,
@@ -841,8 +841,8 @@
                   "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/html-webpack-plugin/lib/loader.js!/Users/guozhen/work/frontEnd/webpack/src/index.html",
                   "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
                   "profile": {
-                    "factory": 40,
-                    "building": 35
+                    "factory": 26,
+                    "building": 145
                   }
                 },
                 {
@@ -850,13 +850,13 @@
                   "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
                   "name": "./node_modules/lodash/lodash.js",
                   "profile": {
-                    "factory": 3,
-                    "building": 988
+                    "factory": 642,
+                    "building": 236
                   }
                 }
               ],
               "profile": {
-                "factory": 100,
+                "factory": 105,
                 "building": 4
               },
               "failed": false,
@@ -914,8 +914,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 40,
-            "building": 35
+            "factory": 26,
+            "building": 145
           },
           "failed": false,
           "errors": 0,
@@ -960,14 +960,14 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/html-webpack-plugin/lib/loader.js!/Users/guozhen/work/frontEnd/webpack/src/index.html",
               "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
               "profile": {
-                "factory": 40,
-                "building": 35
+                "factory": 26,
+                "building": 145
               }
             }
           ],
           "profile": {
-            "factory": 3,
-            "building": 988
+            "factory": 642,
+            "building": 236
           },
           "failed": false,
           "errors": 0,
@@ -1013,8 +1013,8 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/html-webpack-plugin/lib/loader.js!/Users/guozhen/work/frontEnd/webpack/src/index.html",
               "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
               "profile": {
-                "factory": 40,
-                "building": 35
+                "factory": 26,
+                "building": 145
               }
             },
             {
@@ -1022,13 +1022,13 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
               "name": "./node_modules/lodash/lodash.js",
               "profile": {
-                "factory": 3,
-                "building": 988
+                "factory": 642,
+                "building": 236
               }
             }
           ],
           "profile": {
-            "factory": 100,
+            "factory": 105,
             "building": 4
           },
           "failed": false,
@@ -1075,8 +1075,8 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/html-webpack-plugin/lib/loader.js!/Users/guozhen/work/frontEnd/webpack/src/index.html",
               "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
               "profile": {
-                "factory": 40,
-                "building": 35
+                "factory": 26,
+                "building": 145
               }
             },
             {
@@ -1084,13 +1084,13 @@
               "identifier": "/Users/guozhen/work/frontEnd/webpack/node_modules/lodash/lodash.js",
               "name": "./node_modules/lodash/lodash.js",
               "profile": {
-                "factory": 3,
-                "building": 988
+                "factory": 642,
+                "building": 236
               }
             }
           ],
           "profile": {
-            "factory": 100,
+            "factory": 105,
             "building": 4
           },
           "failed": false,
