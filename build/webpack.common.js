@@ -28,36 +28,13 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/i,
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2,   // 在执行css-loader前，先去执行sass-loader和postcss-loader
-                        }
-                    },
-                    'sass-loader',
-                    'postcss-loader'
-                ]
-            },
-            {
-                test: /\.css$/i,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader'
-                ]
-            },
-            {
                 test: /\.(eot|ttf|svg|woff)$/i,
                 use: [
                     {
                         loader: 'file-loader'
                     },
                 ]
-            },
-
+            }
         ]
     },
     plugins: [
@@ -67,6 +44,7 @@ module.exports = {
         new CleanWebpackPlugin(),
     ],
     optimization: {
+        usedExports: true,    // tree shaking
         splitChunks: {  // 使用默认配置即可
             chunks: 'all',  // async: 只对异步代码生效; all: 同步异步都生效
         }

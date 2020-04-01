@@ -12,12 +12,35 @@ const devConfig = {
         hot: true,
         // hotOnly: true,
     },
+    module: {
+        rules: [
+            {
+                test: /\.scss$/i,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,   // 在执行css-loader前，先去执行sass-loader和postcss-loader
+                        }
+                    },
+                    'sass-loader',
+                    'postcss-loader'
+                ]
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
+            }
+        ]
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ],
-    optimization: {
-        usedExports: true
-    }
+    ]
 }
 
 module.exports = merge(commonConfig,devConfig)
