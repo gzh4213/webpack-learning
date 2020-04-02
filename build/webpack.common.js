@@ -2,10 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
-const merge = require('webpack-merge')
-const devConfig = require('./webpack.dev')
-const prodConfig = require('./webpack.prod')
-const commonConfig = {
+module.exports = {
     entry: {
         main: './src/index.js'
     },
@@ -78,12 +75,4 @@ const commonConfig = {
         // publicPath: '/',
         path: path.resolve(__dirname, '../dist'),
     },
-}
-
-module.exports = (env) => {
-    if(env && env.production) {
-        return merge(commonConfig, prodConfig)
-    } else {
-        return merge(commonConfig, devConfig)
-    }
 }
