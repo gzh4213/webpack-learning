@@ -44,15 +44,24 @@ module.exports = {
         new CleanWebpackPlugin(),
     ],
     optimization: {
+        // runtimeChunk: {
+        //     name: 'runtime'
+        // },  // webpack 低版本，可配置此项
         usedExports: true,    // tree shaking
         splitChunks: {  // 使用默认配置即可
             chunks: 'all',  // async: 只对异步代码生效; all: 同步异步都生效
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    name: 'vendors'
+                },      // 修改生成chunk的名字
+            }
         }
     },
+    performance: false,
     output: {
         // publicPath: '/',
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js',
         path: path.resolve(__dirname, '../dist'),
     },
 }
