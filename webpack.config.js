@@ -20,6 +20,16 @@ module.exports = {
         port: 8080,
         hot: true,
         hotOnly: true,
+        proxy: {
+            '/react/api': {
+                target: 'http://www.dell-lee.com',
+                secure: false,
+                pathRewrite: {
+                    'header.json': 'demo.json'
+                },
+                changeOrigin: true
+            }
+        }
     },
     module: {
         rules: [
