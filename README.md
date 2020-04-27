@@ -100,3 +100,18 @@ plugins: ['plugin-syntax-dynamic-import]
 ### chunk是什么
 
 > 打包生成的每一个js文件都可叫做chunk
+
+### 库打包
+
+> libraryTarget 和 library可以配合使用，当libraryTarget为‘this‘,library变量会挂载到this上面，还可设置window，global（node环境）
+
+````
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'library.js',
+    library: 'library',    // 支持script标签引入，生成全局变量
+    libraryTarget: 'umd'   // 支持import require amd引入
+  }
+````
+
+### PWA

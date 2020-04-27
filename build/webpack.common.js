@@ -1,7 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const webpack = require('webpack')
 module.exports = {
     entry: {
         main: './src/index.js'
@@ -14,9 +13,6 @@ module.exports = {
                 use: [
                     {
                         loader: 'babel-loader'
-                    },
-                    {
-                        loader: 'imports-loader?this=>window'
                     }
                 ]
             },
@@ -48,11 +44,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new CleanWebpackPlugin(),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            _join: ['lodash', 'join']
-        })
+        new CleanWebpackPlugin()
     ],
     optimization: {
         // runtimeChunk: {
