@@ -6,17 +6,22 @@ module.exports = {
     entry: {
         main: './src/index.js'
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],   // 引入文件没有后缀名，在此配置寻找  会增加性能耗时
+        // mainFiles: ['index','child'],  // 只引入到文件夹目录 性能问题
+        alias: {
+            child: path.resolve(__dirname,'../src/child')
+        }
+    },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
+                // include: path.resolve(__dirname,'../src'),
                 use: [
                     {
                         loader: 'babel-loader'
-                    },
-                    {
-                        loader: 'imports-loader?this=>window'
                     }
                 ]
             },
@@ -49,15 +54,11 @@ module.exports = {
             template: 'src/index.html'
         }),
         new CleanWebpackPlugin(),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            _join: ['lodash', 'join']
-        })
     ],
     optimization: {
-        // runtimeChunk: {
-        //     name: 'runtime'
-        // },  // webpack 低版本，可配置此项
+        runtimeChunk: {
+            name: 'runtime'
+        },  // webpack 低版本，可配置此项
         usedExports: true,    // tree shaking
         splitChunks: {  // 使用默认配置即可
             chunks: 'all',  // async: 只对异步代码生效; all: 同步异步都生效

@@ -100,3 +100,16 @@ plugins: ['plugin-syntax-dynamic-import]
 ### chunk是什么
 
 > 打包生成的每一个js文件都可叫做chunk
+
+
+### webpack性能优化
+
+> 1.跟上技术迭代（node,npm,yarn)
+
+> 2.在尽可能少的模块上应用loader
+
+> 3.尽可能少使用plugin，并可靠稳定
+
+> 4.resolve参数合理配置
+
+
