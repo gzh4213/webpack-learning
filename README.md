@@ -112,4 +112,6 @@ plugins: ['plugin-syntax-dynamic-import]
 
 > 4.resolve参数合理配置
 
+> 5.DLLPlugin  目标：1.第三方模块只打包一次  2.引入第三方模块使用dll引用
+
 

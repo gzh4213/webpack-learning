@@ -1,7 +1,36 @@
 const path = require('path')
+const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const webpack = require('webpack')
+
+const plugins = [
+    new HtmlWebpackPlugin({
+        template: 'src/index.html'
+    }),
+    new CleanWebpackPlugin(),
+];
+
+const files = fs.readdirSync( path.resolve(__dirname,'../dll'))
+files.forEach(file => {
+    if(/.*\.dll.js/.test(file)) {
+        plugins.push(
+            new AddAssetHtmlWebpackPlugin({
+                filepath: path.resolve(__dirname,'../dll',file)
+            }),
+        )
+    }
+    if(/.*\.manifest.json/.test(file)) {
+        plugins.push(
+            new webpack.DllReferencePlugin({
+                manifest: path.resolve(__dirname,'../dll',file)
+            })
+        )
+    }
+})
+console.log('files:',files)
+
 module.exports = {
     entry: {
         main: './src/index.js'
@@ -9,9 +38,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],   // 引入文件没有后缀名，在此配置寻找  会增加性能耗时
         // mainFiles: ['index','child'],  // 只引入到文件夹目录 性能问题
-        alias: {
-            child: path.resolve(__dirname,'../src/child')
-        }
+        // alias: {
+        //     child: path.resolve(__dirname,'../src/child')
+        // }
     },
     module: {
         rules: [
@@ -49,12 +78,7 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: 'src/index.html'
-        }),
-        new CleanWebpackPlugin(),
-    ],
+    plugins,
     optimization: {
         runtimeChunk: {
             name: 'runtime'
