@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+// eslint-disable-next-line react/prefer-stateless-function
 class List extends Component {
-    render() {
-        return <div>ListPage</div>
-    }
+  render() {
+    // eslint-disable-next-line react/jsx-filename-extension
+    return <div>ListPage</div>;
+  }
 }
 
 export default List;
