@@ -114,4 +114,12 @@ plugins: ['plugin-syntax-dynamic-import]
 
 > 5.DLLPlugin  目标：1.第三方模块只打包一次  2.引入第三方模块使用dll引用
 
+> 7.thread-loader,parallel-webpack,happypack多进程打包
+
+> 8.合理使用sourceMap
+
+> 9.结合stats分析打包结果
+
+> 10.开发环境内存编译，无用插件剔除
+
 
