@@ -5,35 +5,49 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const webpack = require('webpack')
 
-const plugins = [
-    new HtmlWebpackPlugin({
-        template: 'src/index.html'
-    }),
-    new CleanWebpackPlugin(),
-];
+const makePlugins = (configs) => {
+    const plugins = [
+        new CleanWebpackPlugin(),
+    ]
 
-const files = fs.readdirSync( path.resolve(__dirname,'../dll'))
-files.forEach(file => {
-    if(/.*\.dll.js/.test(file)) {
+    Object.keys(configs.entry).forEach(item => {
+        console.log('item:',item)
         plugins.push(
-            new AddAssetHtmlWebpackPlugin({
-                filepath: path.resolve(__dirname,'../dll',file)
+            new HtmlWebpackPlugin({
+                template: 'src/index.html',
+                filename: `${item}.html`,
+                chunks: ['runtime', 'vendors',item]
             }),
         )
-    }
-    if(/.*\.manifest.json/.test(file)) {
-        plugins.push(
-            new webpack.DllReferencePlugin({
-                manifest: path.resolve(__dirname,'../dll',file)
-            })
-        )
-    }
-})
-console.log('files:',files)
+    })
 
-module.exports = {
+    const files = fs.readdirSync( path.resolve(__dirname,'../dll'))
+    files.forEach(file => {
+        if(/.*\.dll.js/.test(file)) {
+            plugins.push(
+                new AddAssetHtmlWebpackPlugin({
+                    filepath: path.resolve(__dirname,'../dll',file)
+                }),
+            )
+        }
+        if(/.*\.manifest.json/.test(file)) {
+            plugins.push(
+                new webpack.DllReferencePlugin({
+                    manifest: path.resolve(__dirname,'../dll',file)
+                })
+            )
+        }
+    })
+
+    return plugins;
+}
+
+// console.log('files:',files)
+
+const configs = {
     entry: {
-        main: './src/index.js'
+        index: './src/index.js',
+        list: './src/list.js'
     },
     resolve: {
         extensions: ['.js', '.jsx'],   // 引入文件没有后缀名，在此配置寻找  会增加性能耗时
@@ -78,7 +92,6 @@ module.exports = {
             }
         ]
     },
-    plugins,
     optimization: {
         runtimeChunk: {
             name: 'runtime'
@@ -101,3 +114,7 @@ module.exports = {
         path: path.resolve(__dirname, '../dist'),
     },
 }
+
+configs.plugins = makePlugins(configs)
+
+module.exports = configs
