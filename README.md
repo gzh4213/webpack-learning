@@ -69,49 +69,177 @@ last 3 iOS versions
 
 ## webpack --watch 可以实时监听文件变化，自动重新打包
 ## webpack-dev-server 不仅可以监听文件变化，自动重新打包，还可以自动刷新浏览器, 支持本地发起ajax请求，方便业务调试
+## HMR 更新修改模块部分，写css时，不会重新刷新浏览器，方便调试；
+### 开启HMR：devServer.hot 设为true，引入插件 `new webpack.HotModuleReplacementPlugin()`
+```
+devServer: {
+    contentBase: './dist',  // 监听目录
+    // open: true, // 是否自动打开浏览器
+    port: 8080,
+    hot: true,    // 开启hot module replacement
+    // hotOnly: true, // 浏览器不自动刷新
+},
+```
 
-
-
+## babel 
 ## 如果babel配置中使用了"useBuiltIns": "usage"，babel/polyfill 会被自动的引入打包文件中，则打包文件中不需要在引入 'import '@babel/polyfill'
 
 ## Tree shaking： 只打包import倒入文件中被使用的模块， 只支持ES Module的引入方式，ES Module底层是静态引入， CommonJs底层是动态引入
 
-> mode: 'development'下，使用tree shaking会把没被使用的exports照样打包，mode: 'production'下不需在webpack中增加配置
+> mode: 'development'下，使用tree shaking会把没被使用的exports照样打包
 > "sideEffects": false  --对所有模块使用tree shaking，"sideEffects": ["*.css"] -- css文件不使用tree Shaking
+```
+// 开启tree shaking
+// 第一步
+//webpack.config.js
+optimization : {
+  usedExports: true
+}
+
+// 第二步
+// package.json
+"sideEffects": ["*.css"]  // 某些文件不希望做tree shaking处理，没有则设置false
+
+```
+> mode: 'production'下不需在webpack中增加配置
+
 
 
 ## development 和 production模式的区分打包
+### sourceMap 配置不同
+### production 代码需要压缩
 
-
-## 代码分割，和webpack无关
-### webpack中实现代码分割，两种方式
+## 代码分割，和webpack无关，某些插件可以帮助实现代码分割
+### webpack中实现代码分割，两种方式，默认只对异步代码进行代码分割
 > 1.同步代码：只需要在webpack.common.js中做optimization的配置
-
+```
+// webpack.config.js
+optimization: {
+  splitChunks: {
+    chunks: 'async',  //async: 代码分割只对异步代码有效; all:
+    minSize: 30000,
+    maxSize: 0,
+    minChunks: 1,
+    maxAsyncRequests: 5,
+    maxInitialRequests: 3,
+    automaticNameDelimiter: '~',
+    automaticNameMaxLength: 30,
+    name: true,
+    cacheGroups: {
+      vendors: {
+        test: /[\\/]node_modules[\\/]/,
+        priority: -10,
+        filename: 'vendors.js'
+      },
+      default: {
+        minChunks: 2,
+        priority: -20,
+        reuseExistingChunk: true
+      }
+    }
+  }
+}
+```
 > 2.异步代码(import)：异步代码，无需做任何配置，会自动进行代码分割，分割代码会放置到新的文件中
-异步加载中有一种魔法注释的语法，在做代码分割的时候，可以给拆分的文件重命名；格式：/* webpackChunkName:"lodash"*/
+### 异步加载中有一种魔法注释的语法，在做代码分割的时候，可以给拆分的文件重命名；格式：`/* webpackChunkName:"lodash"*/`
 生成的文件名格式为： vendors~xxxx.js,
 
-````
+```` 
 .babelrc
 
 plugins: ['plugin-syntax-dynamic-import]
 ````
+### 异步代码可实现懒加载
 
 ### chunk是什么
 
 > 打包生成的每一个js文件都可叫做chunk
+### 打包分析 http://webpack.github.io/analyse/，其他分析工具：https://v4.webpack.js.org/guides/code-splitting/#bundle-analysis
+
+### preload
+### prefetch 页面文件加载完成后，利用网络空闲预加载，使用migic comment,格式：`/* webpackPrefetch:"lodash"*/`
+
+### 代码利用率 coverPage
+
+### css分割 使用plugin： MiniCssExtractPlugin(线上使用)
+参考： https://v4.webpack.js.org/plugins/mini-css-extract-plugin/
+```
+// webpack.config.js
+plugins: [
+  new MiniCssExtractPlugin({})
+]
+```
+### css代码压缩：optimize-css-assets-webpack-plugin
+```
+optimization: {
+  minimizer: [
+    new OptimizeCssAssetsPlugin({})
+  ]
+}
+```
+
+### 浏览器缓存
+
+### shiming 垫片
+
+### 全局变量 webpack --env.prod
 
 ### 库打包
 
-> libraryTarget 和 library可以配合使用，当libraryTarget为‘this‘,library变量会挂载到this上面，还可设置window，global（node环境）
+> 外部使用打包好的库可能会有很多使用方式，ES module，commonJS,AMD等等;libraryTarget 和 library可以配合使用，当libraryTarget为‘this‘,library变量会挂载到this上面，还可设置window，global（node环境）
 
 ````
+// webpack.config.js
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'library.js',
-    library: 'library',    // 支持script标签引入，生成全局变量
-    libraryTarget: 'umd'   // 支持import require amd引入
+    library: 'library',    // 增加此配置，支持script标签引入，生成全局变量
+    libraryTarget: 'umd'   // 增加此配置， 支持import require amd引入
   }
 ````
 
-### PWA
+> 在库打包的时候 设置externals，可以忽略某些依赖的打包
+```
+// webpack.config.js
+externals: ['lodash']
+
+```
+
+更多参考：https://v4.webpack.js.org/guides/author-libraries/
+
+### PWA: 如果你访问一个网站，第一次成功了，第二次再访问挂掉了，pwa技术可以在你本地保留一份缓存，把之前的页面再展示出来
+
+```
+安装：workbox-webpack-pligin
+
+// webpack.config.js
+plugins: [
+  new WorkboxPlugin.GenerateSW({
+    clientsClaim: true,
+    skipWaiting: true
+  })
+]
+```
+> 在打包目录下会生成`service-worker.js` 和 `precache-manifest.js`文件
+
+## 提升打包速度
+* 跟上技术迭代（npm, node)
+* 在尽可能少的模块上应用loader
+* Plugin尽可能少使用，确保可靠性
+* resolve 参数合理配置 （例如省略后缀配置，配置目录默认文件名,设置目录别名）
+```
+// webpack.config.js 
+resolve: {
+  extensions: ['.js','.jsx'],
+  mainFiles: ['index','child'],
+  alias: {
+    '@': './src'
+  }
+}
+```
+* 使用DLLPlugin提高打包速度
+* 控制包文件大小
+* thread-loader,parallel-webpack,happypack多进程打包
+* 合理使用sourceMap
+* 结合stats分析打包结果
+* 开发环境无用插件剔除
